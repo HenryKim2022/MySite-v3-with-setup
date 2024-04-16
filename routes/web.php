@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 // // Add other routes as needed
-
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // // // // CONFIG
 use App\Http\Controllers\ConfigurationController;
 Route::get('/doc', [ConfigurationController::class, 'showDocPage'])->name('doc');
-Route::get('/configure', [ConfigurationController::class, 'showConfigurationPage'])->name('configure');
-Route::post('/configure', [ConfigurationController::class, 'saveConfiguration'])->name('configure.save');
+Route::get('/configure', [ConfigurationController::class, 'showConfigurationPage'])->name('configure');     // FORM VIEWER
+Route::post('/configure', [ConfigurationController::class, 'saveConfiguration'])->name('configure.save');   // CONFIG FORM SAVER
 if (env('APP_INSTALL', false)) {    // Not False
     Route::redirect('/', '/configure');    
 } else {
@@ -31,7 +35,6 @@ if (env('APP_INSTALL', false)) {    // Not False
         return redirect('/');
     });
     
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+    Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 }
+

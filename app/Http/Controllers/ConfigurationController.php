@@ -81,7 +81,6 @@ class ConfigurationController extends Controller
 
                 
                 'VITE_APP_NAME' => '"${APP_NAME}"',
-
                 
 
                 'VITE_PUSHER_APP_KEY' => '"${PUSHER_APP_KEY}"',
@@ -89,15 +88,9 @@ class ConfigurationController extends Controller
                 'VITE_PUSHER_PORT' => '"${PUSHER_PORT}"',
                 'VITE_PUSHER_SCHEME' => '"${PUSHER_SCHEME}"',
                 'VITE_PUSHER_APP_CLUSTER' => '"${PUSHER_APP_CLUSTER}"', 
-
             ];
     
-
-
             
-
-
-
             // Generate the new .env file
             $envFile = base_path('.env');
             $contents = "";
